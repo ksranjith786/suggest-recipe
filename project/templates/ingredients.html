@@ -1,6 +1,105 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <h1>Ingredients</h1>
-    </head>
+
+<head>
+    <title>Ingredients</title>
+</head>
+
+<!--body>
+    <form action="/recipes" method="POST">
+        <p>Meal:</p>
+        <input type="radio" id="breakfast" name="meal" value="Breakfast" selected>
+        <label for="breakfast">Breakfast</label><br>
+        <input type="radio" id="lunch" name="meal" value="Lunch">
+        <label for="lunch">Lunch</label><br>
+        <input type="radio" id="snacks" name="meal" value="Snacks">
+        <label for="snacks">Snacks</label>
+        <input type="radio" id="dinner" name="meal" value="Dinner">
+        <label for="dinner">Dinner</label>
+
+        <p>Please select your existing Ingredients:</p>
+        <input type="checkbox" name="rice" value="rice">
+        <label for="vehicle1"> rice / dosa rice</label><br>
+        <input type="checkbox" name="urad_dal" value="urad_dal">
+        <label for="vehicle2"> urad dal</label><br>
+        <input type="checkbox" name="oil" value="oil" checked>
+        <label for="vehicle3"> oil</label><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body-->
+<link rel="stylesheet" href="../static/css/ingredients.css">
+
+<body>
+    <form action="/recipes" method="POST">
+    <div class="wrap">
+        <label style="font-size: 22px;font-weight: bold;padding:10px; color: white;">Meal Type</label>
+        <br />
+        <label> 
+            <input type="radio" checked id="breakfast" name="meal">
+            <div class="btn btn-sık"><span>Breakfast</span></div>
+        </label>
+        <label>
+            <input type="radio" id="lunch" name="meal">
+            <div class="btn btn-sık"><span>Lunch</span></div>
+        </label>
+        <label>
+            <input type="radio" id="snacks" name="meal">
+            <div class="btn btn-sık"><span>Snacks</span></div>
+        </label>
+        <label>
+            <input type="radio" id="dinner" name="meal">
+            <div class="btn btn-sık"><span>Dinner</span></div>
+        </label>
+
+        <br />
+        <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">Select the existing Ingredient(s)</label>
+        <br />
+
+        <label>
+            <input type="checkbox" name="rice" />
+            <div class="btn btn-sık"><span>Rice</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="rice_idly" />
+            <div class="btn btn-sık"><span>Idly Rice</span></div>
+        </label>
+        <label>
+            <input type="checkbox" checked name="rice_dosa" />
+            <div class="btn btn-sık"><span>Dosa Rice</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="atta_wheat" />
+            <div class="btn btn-sık"><span>Wheat Atta</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="rava" />
+            <div class="btn btn-sık"><span>Rava</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="sooji" />
+            <div class="btn btn-sık"><span>Sooji</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="moongdal" />
+            <div class="btn btn-sık"><span>Moong Dal</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="poha" />
+            <div class="btn btn-sık"><span>Poha</span></div>
+        </label>
+        <label>
+            <input type="checkbox" name="beaten_rice" />
+            <div class="btn btn-sık"><span>Beaten Rice</span></div>
+        </label>
+        <label>
+            <input type="checkbox" checked name="oil" />
+            <div class="btn btn-sık"><span>Oil</span></div>
+        </label>
+        <br><br>
+        <center><div class="btn btn-sık"><input type="submit" value="Submit"></div></center>
+    </div>
+</form>
+</body>
+
 </html>

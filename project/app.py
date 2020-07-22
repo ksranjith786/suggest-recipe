@@ -4,8 +4,9 @@ from os import environ
 # Blueprints
 from routes.home import home_bp
 from routes.ingredients import ingredients_bp
+from routes.recipes import recipes_bp
 
-blueprints = (home_bp, ingredients_bp)
+blueprints = (home_bp, ingredients_bp, recipes_bp)
 
 def create_app():
     app = Flask(__name__)

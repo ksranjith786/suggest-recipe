@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipes</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Colspan and rowspan</h1>
+
+<h3>Cell that spans two columns:</h3>
+<table>
+  <tr>
+    <th>Recipe</th>
+    <th>Ingredients</th>
+    <th>Link</th>
+    <th>Image</th>    
+  </tr>
+  <tr>
+    <td>{{rName}}</td>
+    <td>{{rList}}</td>
+    <td><a href="{{rLink}}">ClickHere</a></td>    
+    <td><img src="{{rImageURL}}"></td>
+  </tr>
+</table>
+
+</body>
+</html>
