@@ -1,0 +1,11 @@
+1. User Interface
+2. HTML modeling to recipe.html
+3. For the given ingredients
+    - best possible recipe
+	    - with min ingredients
+	    - with any no.of ingredients
+4. If a recipe is suggested and there is a need for combination of Munching then we would need to suggest that too
+    - E.g: Ingredients are ['rice', 'oil'], then suggested Recipes are ['dosa'] But we definitely need a Munching Recipe like Chutney or Sambar
+5. Gather as much of data from a Website
+6. Persist it for better accessing
+7. Modeling recommendation Engine
