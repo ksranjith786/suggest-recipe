@@ -89,7 +89,7 @@ def run(url, provider):
                     # Skip the URL that does not have recipe in it
                     if "recipe" not in RECIPE_LINK:
                         print("Skip")
-                        pass
+                        continue
                 
                 ingredientsExt = IngredientsExtractor(RECIPE_LINK, provider)
                 name = ingredientsExt.getName()
