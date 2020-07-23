@@ -46,5 +46,4 @@ def recipes():
     
     return render_template('recipes.html', rName = title, rList = recipesList, rLink = URL, rImageURL = imageURL)
     """
-
-# end estimate
+# end recipes
