@@ -12,7 +12,7 @@ from routes.management import management_bp
 blueprints = (home_bp, ingredients_bp, recipes_bp, management_bp)
 
 def create_app():
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__)
 
     get_config(app)
 
