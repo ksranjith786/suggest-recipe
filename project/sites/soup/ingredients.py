@@ -3,10 +3,14 @@ import requests
 
 #URL = 'https://hebbarskitchen.com/plain-dosa/'
 class IngredientsExtractor:
-    def __init__(self, URL):
-        self.URL = URL
-        self.TITLE = ""
+    def __init__(self, url, provider=""):
+        self.URL = url
+        self.NAME = ""
         self.INGREDIENTS = []
+        self.TYPE = ""
+        self.IMAGE_URL = ""
+        self.PROVIDER = provider
+
         self.soupObj = None
         
     def getResponse(self):
@@ -16,12 +20,25 @@ class IngredientsExtractor:
         data = self.getResponse()
         self.soupObj = BeautifulSoup(data, 'html.parser')
 
-    def getTitle(self):
+    def getName(self):
         if self.soupObj == None:
             self.scrapeURL()
         
-        self.TITLE = self.soupObj.title.text
-        return self.TITLE
+        self.NAME = self.soupObj.title.text
+        return self.NAME
+    
+    def getUrl(self):
+        return self.URL
+
+    def getType(self):
+        if self.soupObj == None:
+            self.scrapeURL()
+
+        soup = self.soupObj
+        for meta in soup.find_all('meta', {'property': "article:section"}):
+            self.TYPE = meta['content']
+        
+        return self.TYPE
 
     def getImageUrl(self):
         if self.soupObj == None:
@@ -52,16 +69,19 @@ class IngredientsExtractor:
         
         return self.INGREDIENTS
 
+    def getProvider(self):
+        return self.PROVIDER
+
     # For call to repr(). Prints object's information 
     def __str__(self):
-        return '%s (%s, %s, %s)' % (self.__class__, self.TITLE, self.IMAGE_URL, self.INGREDIENTS)
+        return '%s (%s, %s, %s, %s, %s)' % (self.__class__, self.URL, self.NAME, self.TYPE, self.IMAGE_URL, self.INGREDIENTS)
     
 # end class
 
 if __name__ == "__main__":
     URL = 'https://hebbarskitchen.com/plain-dosa/'
     extractor = IngredientsExtractor(URL)
-    #extractor.getTitle()
+    #extractor.getNAME()
     #extractor.getImageUrl()
     #extractor.getIngredients()
     #print(str(extractor))

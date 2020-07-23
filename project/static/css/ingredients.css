@@ -7,8 +7,8 @@ body{
 .wrap{
     padding: 15px;
     background-color: #424242;
-    width: 480px;
-    height: 390px;
+    width: 576px;
+    height: 432px;
     border-radius: 12px;
     position: absolute; /*it can be fixed too*/
     left: 0;
@@ -53,10 +53,9 @@ label {
     border-radius: 20px;
 }
 
-
-    btn-sık::selection{
-        background: green;
-    }
+btn-sık::selection{
+    background: green;
+}
 
 input[type="radio"] {
      position: absolute;

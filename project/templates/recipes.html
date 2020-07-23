@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Recipes</title>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
+  <title>Recipes</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: sans-serif
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Colspan and rowspan</h1>
+  <h1>Recipes</h1>
 
-<h3>Cell that spans two columns:</h3>
-<table>
-  <tr>
-    <th>Recipe</th>
-    <th>Ingredients</th>
-    <th>Link</th>
-    <th>Image</th>    
-  </tr>
-  <tr>
-    <td>{{rName}}</td>
-    <td>{{rList}}</td>
-    <td><a href="{{rLink}}">ClickHere</a></td>    
-    <td><img src="{{rImageURL}}"></td>
-  </tr>
-</table>
+  <h3>Recipes that matches</h3>
+  <table>
+    <tr>
+      <th>Recipe</th>
+      <th>Ingredients</th>
+      <th>Provider</th>
+      <th>Link</th>
+      <th>Image</th>
+    </tr>
+    {% for recipe in recipes %}
+    <tr>
+      <td style="word-wrap: break-word">
+        <h4 style="font-family:verdana">
+          {% for name in recipe.name.split("|") %}
+          {{ name }}
+          {% endfor %}
+        </h4>
+      </td>
+      <td style="word-wrap: break-word">
+        <p style="font-family:'Courier New'">{{ recipe.ingredients }}</p>
+      </td>
+      <td>{{ recipe.provider }}</td>
+      <td><a href="{{ recipe.url }}">ClickHere</a></td>
+      <td style="width:15%"><a href="{{ recipe.url }}"><img src="{{ recipe.imageURL }}"></a></td>
+    </tr>
+    {% endfor %}
+  </table>
 
 </body>
+
 </html>
