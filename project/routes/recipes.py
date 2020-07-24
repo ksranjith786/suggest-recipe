@@ -29,9 +29,9 @@ def recipes():
     for result in rs:
         recipe = dict()
         recipe['id'] = result.id
-        recipe['name'] = result.name
+        recipe['name'] = result.name.strip().lower().replace('recipe', '').capitalize()
         recipe['url'] = result.url
-        recipe['type'] = result.type
+        recipe['type'] = result.type.capitalize()
         recipe['ingredients'] = result.ingredients
         recipe['imageURL'] = result.imageURL
         recipe['provider'] = result.provider
