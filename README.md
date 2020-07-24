@@ -9,6 +9,9 @@ https://suggest-recipe.herokuapp.com
 
 Please click [here](https://suggest-recipe.herokuapp.com) to view the LIVE app.
 
+## Credit To
+The idea was proposed by Madhuri and Suresh.
+
 ## Source checkout
 ```
 git clone https://github.com/ksranjith786/suggest-recipe.git
