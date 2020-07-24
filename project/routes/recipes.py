@@ -10,6 +10,11 @@ def recipes():
     mealType = request.form.get("meal", default = "breakfast", type = str)
     combination = request.form.get("combination", default = "all", type = str)
     ingredients = request.form.getlist('ingredient')
+
+    # When the list of ingredient(s) is empty
+    if len(ingredients) == 0:
+        return "Please select any ingredient!"
+
     ingredientString = ""
     for ingredient in ingredients:
         ingredientString += ingredient + ";"
