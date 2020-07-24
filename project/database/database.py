@@ -36,15 +36,15 @@ class RecipeSchema(ma.Schema):
 Session = sessionmaker(bind=engine)
 ses = Session()
 
-def initDB():
+def initDB(databaseURL):
     global engine, db_session
-    engine = create_engine('sqlite:///' + 'hebbars_recipes.db', convert_unicode=True, connect_args={'check_same_thread': False})
+    engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
     db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
     return db_session
 # end initDB
 
-def createRecipeDB():
-    initDB()
+def createRecipeDB(databaseURL):
+    initDB(databaseURL)
     global Base
     Base.metadata.bind = engine
     Base.metadata.create_all(bind=engine)

@@ -7,12 +7,16 @@ from routes.ingredients import ingredients_bp
 from routes.recipes import recipes_bp
 from routes.management import management_bp
 
+from database.database import createRecipeDB
+
 blueprints = (home_bp, ingredients_bp, recipes_bp, management_bp)
 
 def create_app():
     app = Flask(__name__)
 
     get_config(app)
+
+    create_db()
 
     register_blueprint(app, blueprints)
 
@@ -21,15 +25,18 @@ def create_app():
 
 def get_config(app):
     app.config.from_pyfile('config.py', silent=True)
-    
-    envFLASK = environ.get('FLASK_ENV')
 
+    envFLASK = environ.get('FLASK_ENV')
     if envFLASK == 'development':
         app.debug = True
     else:
         app.debug = False
-    
 # end get_config
+
+def create_db():
+    databaseURL = environ.get('DATABASE_URL')
+    createRecipeDB(databaseURL)
+# end create_db
 
 def register_blueprint(app, blueprints):
     for blueprint in blueprints:

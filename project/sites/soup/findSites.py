@@ -8,7 +8,7 @@ from database.database import createRecipeDB, addRecipeToDB
 #PROVIDER = "Hebbar's Kitchen"
 
 def run(url, provider):
-    print(url, provider)
+    #print(url, provider)
 
     url_response = None
     main_soup = None
@@ -20,7 +20,7 @@ def run(url, provider):
         print("Exception caught while retrieving data from website")
         return False
     
-    createRecipeDB()
+    # createRecipeDB()
 
     #for link in soup.find_all('a'):
     #    print(link.get('href'))
@@ -89,7 +89,7 @@ def run(url, provider):
                     # Skip the URL that does not have recipe in it
                     if "recipe" not in RECIPE_LINK:
                         print("Skip")
-                        continue
+                        #continue
                 
                 ingredientsExt = IngredientsExtractor(RECIPE_LINK, provider)
                 name = ingredientsExt.getName()
