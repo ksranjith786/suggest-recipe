@@ -1,23 +1,30 @@
-body { 
-  font-size: 140%; 
-}
-
-h2 {
+/* The grid: Three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 15%;
+  padding: 50px;
   text-align: center;
-  padding: 20px 0;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
 }
 
-table caption {
-	padding: .5em 0;
+.containerTab {
+  padding: 20px;
+  color: white;
 }
 
-table.dataTable th,
-table.dataTable td {
-  white-space: nowrap;
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.p {
-  text-align: center;
-  padding-top: 140px;
-  font-size: 14px;
+/* Closable button inside the image */
+.closebtn {
+  float: right;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
 }

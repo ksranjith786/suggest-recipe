@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from sites.soup.ingredients import IngredientsExtractor
 from database.database import queryIngredientsFromDB
+import random
 
 recipes_bp = Blueprint('recipes', __name__, url_prefix='/recipes')
 
@@ -22,6 +23,8 @@ def recipes():
             msg = "No such combination of Ingredients to fetch recipe(s). Try with [Any] combination instead of all;"
         return msg
     
+    #colors = ["SpringGreen", "SaddleBrown", "LightGrey", "OldLace", "Azure", "LightGreen", "GhostWhite", "Chartreuse", "Teal", "PaleTurquoise", "LightSteelBlue", "MediumBlue", "Cornsilk", "NavajoWhite"]
+    colors = ["Salmon","Red","DarkGreen","DarkCyan","HotPink","DarkOliveGreen","DarkOrange","DarkTurquoise","DarkSlateGray","Indigo","Goldenrod","LightCoral","LightSeaGreen","Magenta","SlateBlue","DimGrey"]
     recipes = []
     for result in rs:
         recipe = dict()
@@ -32,6 +35,8 @@ def recipes():
         recipe['ingredients'] = result.ingredients
         recipe['imageURL'] = result.imageURL
         recipe['provider'] = result.provider
+        recipe['color1'] = colors[random.randint(0, len(colors)/2)]
+        recipe['color2'] = colors[random.randint(len(colors)/2, len(colors)- 1)]
 
         recipes.append(recipe)
     
