@@ -18,7 +18,7 @@ def scrapeSite(provider: str):
 @management_bp.route('/createdb', methods=['GET'])
 def createDB():
     createRecipeDB()
-    return "Created DB"
+    return "Created a Database"
 #end createDB
 
 @management_bp.route('/recipe', methods=['GET']) # The URL could be either .../details or .../details/; But if '' instead of '/' is used then .../details only works
@@ -33,10 +33,10 @@ def addRecipe():
 
 #(akki roti recipe | masala akki rotti recipe | rice flour roti, https://hebbarskitchen.com/wp-content/uploads/2020/07/akki-roti-recipe-masala-akki-rotti-recip7/akki-roti-recipe-masala-akki-rotti-recipe-rice-flour-roti-1-200x300.jpg, ['2 cup rice flour', '1 onion, finely chopped', '2 tbsp dill leaves / sabbasige sopp tbsp, curry leaves, finely chopped', '1 iu', '2 tbsp coriander, finely chopped', '2 tbsp, curry leaves, finely chopped', '1 inch ginger, grated', '2 chilli, finely chopped', '1 tsp cumin', '1 tsp salt', 'water, as required', 'oil, for roasting'])
 @management_bp.route('/recipe/<string:name>', methods=['GET'])
-def query(name: str):
+def queryRecipe(name: str):
     rs = queryRecipeFromDB(name)
     if rs is None:
-        return "No such Table/rows"
+        return "No such recipe to fetch! or No such recipe table/rows exists"
     
     recipes = []
     for result in rs:
@@ -71,7 +71,7 @@ def query(name: str):
         ''', recipes=recipes
         )
 """
-# end query
+# end queryRecipe
 
 @management_bp.route('/recipe/delete/<int:id>', methods=['GET'])
 def deleteRecipe(id: int):

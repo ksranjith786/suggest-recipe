@@ -8,7 +8,7 @@ body{
     padding: 15px;
     background-color: #424242;
     width: 576px;
-    height: 432px;
+    height: 576px;
     border-radius: 12px;
     position: absolute; /*it can be fixed too*/
     left: 0;

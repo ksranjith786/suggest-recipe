@@ -20,10 +20,6 @@ def create_app():
 # end create_app
 
 def get_config(app):
-    app.config.from_mapping(
-        SECRET_KEY='ranjithks',
-    )
-
     app.config.from_pyfile('config.py', silent=True)
     
     envFLASK = environ.get('FLASK_ENV')

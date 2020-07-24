@@ -17,7 +17,10 @@ def recipes():
     
     rs = queryIngredientsFromDB(ingredientString, combination)
     if rs is None:
-        return "No such Ingredients for recipe(s)"
+        msg = "No such Ingredients to fetch recipe(s)"
+        if combination == "all":
+            msg = "No such combination of Ingredients to fetch recipe(s). Try with [Any] combination instead of all;"
+        return msg
     
     recipes = []
     for result in rs:
