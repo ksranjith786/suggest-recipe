@@ -88,22 +88,19 @@ def queryRecipeFromDB(name=""):
 # end queryRecipeFromDB
 
 def queryIngredientsFromDB(ingredients="", combination="all"):
-    print(ingredients, combination)
+    #print(ingredients, combination)
     if db_session == None:
         initDB()
     
     try:
         ids = []
         for ingredient in ingredients.split(";"):
-            print(ingredient)
-            print("Ids:", ids)
+            #print(ingredient)
             look_for = '%{0}%'.format(ingredient)
             if len(ids) == 0:
-                print("Zero Ids")
                 rs = db_session.query(Recipe).filter(Recipe.ingredients.ilike(look_for))
                 
             else:
-                print("Few Ids")
                 rs = db_session.query(Recipe).filter(
                     and_(
                         Recipe.id.in_(ids),
@@ -124,7 +121,7 @@ def queryIngredientsFromDB(ingredients="", combination="all"):
                     if ids.count(result.id) == 0:
                         ids.append(result.id)
                                 
-        print(ids)
+        #print(ids)
         #print(rs)
 
     except:
