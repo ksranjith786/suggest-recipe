@@ -19,6 +19,23 @@
     h5 {
       font-family: sans-serif
     }
+
+    h4 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: medium;
+      font-variant-caps: normal;
+    }
+    
+    p {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: small;
+    }
+
+    a {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: smaller;
+    }
+
   </style>
 </head>
 
@@ -37,19 +54,19 @@
     </tr>
     {% for recipe in recipes %}
     <tr>
-      <td style="word-wrap: break-word">
-        <h4 style="font-family:verdana">
+      <td style="word-wrap: break-word" width="15%">
+        <h4>
           {% for name in recipe.name.split("|") %}
-          {{ name }}
+          {{name}} (or)
           {% endfor %}
         </h4>
       </td>
       <td style="word-wrap: break-word">
-        <p style="font-family:'Courier New'">{{ recipe.ingredients }}</p>
+        <p>{{recipe.ingredients}}</p>
       </td>
-      <td>{{ recipe.provider }}</td>
-      <td><a href="{{ recipe.url }}">ClickHere</a></td>
-      <td style="width:15%"><a href="{{ recipe.url }}"><img src="{{ recipe.imageURL }}"></a></td>
+      <td><h6>{{recipe.provider}}</h6></td>
+      <td><a href="{{recipe.url}}">ClickHere</a></td>
+      <td style="width:15%"><a href="{{recipe.url}}"><img src="{{recipe.imageURL}}"></a></td>
     </tr>
     {% endfor %}
   </table>
