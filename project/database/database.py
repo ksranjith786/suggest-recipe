@@ -94,12 +94,12 @@ def queryIngredientsFromDB(ingredients="", combination="all"):
     
     try:
         ids = []
+        rs = None
         for ingredient in ingredients.split(";"):
             #print(ingredient)
             look_for = '%{0}%'.format(ingredient)
             if len(ids) == 0:
                 rs = db_session.query(Recipe).filter(Recipe.ingredients.ilike(look_for))
-                
             else:
                 rs = db_session.query(Recipe).filter(
                     and_(
@@ -109,26 +109,23 @@ def queryIngredientsFromDB(ingredients="", combination="all"):
                     )
             
             if combination == "all":
-                if len(rs) == 0:
-                    print("No such recipe combination to look out for")
-                    rs = None
-                    break
                 ids = []
                 for result in rs:
                     ids.append(result.id)
+                
+                if len(ids) == 0:
+                    print("No such recipe combination to look out for ingredient")
+                    rs = None
+                    break
             else:
                 for result in rs:
                     if ids.count(result.id) == 0:
                         ids.append(result.id)
-                                
-        #print(ids)
-        #print(rs)
-
+        
     except:
         print("Exception caught while querying ingredients")
         return None
 
-    #print("No.of Records matched:", noOfRecords)
     return rs
 # end queryRecipeFromDB
 
