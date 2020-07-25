@@ -6,7 +6,7 @@ management_bp = Blueprint('management', __name__, url_prefix='/management')
 
 @management_bp.route('/data/scrape/<string:provider>', methods=['GET'])
 def scrapeSite(provider: str):
-    url = "https://hebbarskitchen.com"
+    url = "https://hebbarskitchen.com/recipes/breakfast-recipes/"
     retVal = run(url, provider)
     msg = "Scraping Data from " + provider + " is successful"
     if retVal is False:

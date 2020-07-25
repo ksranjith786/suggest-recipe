@@ -39,6 +39,7 @@ ses = Session()
 def initDB(databaseURL):
     global engine, db_session
     engine = create_engine(databaseURL)
+    #engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
     db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
     return db_session
 # end initDB
