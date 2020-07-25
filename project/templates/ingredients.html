@@ -3,110 +3,295 @@
 
 <head>
     <title>Ingredients</title>
-</head>
+    <style>
+        body {
+            font-family: 'Ek Mukta', sans-serif;
+            height: 100%;
+            width: 100%;
+            background: #212121;
+        }
 
-<link rel="stylesheet" href="../static/css/ingredients.css">
+        .wrap {
+            padding: 15px;
+            background-color: #424242;
+            width: 476px;
+            height: 580px;
+            border-radius: 12px;
+            position: absolute;
+            /*it can be fixed too*/
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            /*this to solve "the content will not be cut when the window is smaller than the content": */
+            max-width: 100%;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        label {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            cursor: pointer !important;
+        }
+
+        .btn:active {
+            box-shadow: 0 1px #666 !important;
+            transform: translateY(2px) !important;
+        }
+
+        .btn {
+            font-size: 15px;
+            font-weight: bold;
+            height: 35px;
+            width: 100px;
+            box-shadow: 0 3px #999;
+            text-align: center;
+        }
+
+        .btn-sık {
+            transition: all 0.2s ease;
+            background-color: white;
+            border: 2px solid #f44336 !important;
+            box-shadow: 0 3px #d32f2f !important;
+            min-width: 150px;
+            border-radius: 20px;
+        }
+
+        btn-sık::selection {
+            background: green;
+        }
+
+        input[type="radio"] {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        input[type="radio"]+div {
+            position: relative;
+        }
+
+        input[type="radio"]:checked+div {
+            background-color: #ef5350;
+        }
+
+        input[type="radio"]:checked+div>span {
+            color: white;
+        }
+
+        input[type="radio"]+div>span {
+            position: relative;
+            top: 25%;
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        input[type="checkbox"]+div {
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked+div {
+            background-color: #ef5350;
+        }
+
+        input[type="checkbox"]:checked+div>span {
+            color: white;
+        }
+
+        input[type="checkbox"]+div>span {
+            position: relative;
+            top: 25%;
+        }
+
+        input[type="checkbox"]:checked+div::before {
+            content: "✔";
+            position: absolute;
+            bottom: 18px;
+            right: 0px;
+            font-size: 21px;
+            color: white;
+        }
+
+        input[type="radio"]:checked+div::before {
+            font-family: FontAwesome;
+            content: "↯";
+            position: absolute;
+            bottom: 31px;
+            font-size: 21px;
+            color: white;
+            right: -5px;
+            -webkit-transform: rotate(30deg);
+            -moz-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+            -ms-transform: rotate(30deg);
+            transform: rotate(30deg);
+            animation: fall 0.5s forwards;
+        }
+
+        @keyframes fall {
+            100% {
+                -webkit-transform: translate(-5px, 5px) rotate(30deg);
+                -moz-transform: translate(-5px, 5px) rotate(30deg);
+                -o-transform: translate(-5px, 5px) rotate(30deg);
+                -ms-transform: translate(-5px, 5px) rotate(30deg);
+                transform: translate(-5px, 5px) rotate(30deg);
+            }
+        }
+
+        @-moz-keyframes fall {
+            100% {
+                -webkit-transform: translate(-5px, 5px) rotate(30deg);
+                -moz-transform: translate(-5px, 5px) rotate(30deg);
+                -o-transform: translate(-5px, 5px) rotate(30deg);
+                -ms-transform: translate(-5px, 5px) rotate(30deg);
+                transform: translate(-5px, 5px) rotate(30deg);
+            }
+        }
+
+        @-webkit-keyframes fall {
+            100% {
+                -webkit-transform: translate(-5px, 5px) rotate(30deg);
+                -moz-transform: translate(-5px, 5px) rotate(30deg);
+                -o-transform: translate(-5px, 5px) rotate(30deg);
+                -ms-transform: translate(-5px, 5px) rotate(30deg);
+                transform: translate(-5px, 5px) rotate(30deg);
+            }
+        }
+    </style>
+</head>
 
 <body>
     <form action="/recipes" method="POST">
-    <div class="wrap">
-        <label style="font-size: 22px;font-weight: bold;padding:10px; color: white;">Meal Type</label>
-        <br />
-        <label> 
-            <input type="radio" checked id="breakfast" name="meal" value="breakfast">
-            <div class="btn btn-sık"><span>Breakfast</span></div>
-        </label>
-        <label>
-            <input type="radio" name="meal" id="lunch" value="lunch">
-            <div class="btn btn-sık"><span>Lunch</span></div>
-        </label>
-        <label>
-            <input type="radio" name="meal" id="snacks" value="snacks">
-            <div class="btn btn-sık"><span>Snacks</span></div>
-        </label>
-        <label>
-            <input type="radio" name="meal" id="dinner" value="dinner">
-            <div class="btn btn-sık"><span>Dinner</span></div>
-        </label>
-        <br/>
-        <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">[All] or [Any] of the selected Ingredients</label>
-        <br/>
-        <label>
-            <input type="radio" name="combination" id="any" value="any">
-            <div class="btn btn-sık"><span>Any</span></div>
-        </label>
-        <label>
-            <input type="radio" name="combination" checked id="all" value="all">
-            <div class="btn btn-sık"><span>All</span></div>
-        </label>
-        <br/>
-        <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">Select available Ingredient(s)</label>
-        <br/>
+        <div class="wrap">
+            <label style="font-size: 22px;font-weight: bold;padding:10px; color: white;">Meal Type</label>
+            <br />
+            <label>
+                <input type="radio" checked id="breakfast" name="meal" value="breakfast">
+                <div class="btn btn-sık"><span>Breakfast</span></div>
+            </label>
+            <label>
+                <input type="radio" name="meal" id="lunch" value="lunch">
+                <div class="btn btn-sık"><span>Lunch</span></div>
+            </label>
+            <label>
+                <input type="radio" name="meal" id="snacks" value="snacks">
+                <div class="btn btn-sık"><span>Snacks</span></div>
+            </label>
+            <label>
+                <input type="radio" name="meal" id="dinner" value="dinner">
+                <div class="btn btn-sık"><span>Dinner</span></div>
+            </label>
+            <br />
+            <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">[All] or [Any] of the selected
+                Ingredients</label>
+            <br />
+            <label>
+                <input type="radio" name="combination" id="any" value="any">
+                <div class="btn btn-sık"><span>Any</span></div>
+            </label>
+            <label>
+                <input type="radio" name="combination" checked id="all" value="all">
+                <div class="btn btn-sık"><span>All</span></div>
+            </label>
+            <br />
+            <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">Select available
+                Ingredient(s)</label>
+            <br />
 
-        <label>
-            <input type="checkbox" name="ingredient" value="rice" />
-            <div class="btn btn-sık"><span>Rice</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="idli rice" />
-            <div class="btn btn-sık"><span>Idli Rice</span></div>
-        </label>
-        <label>
-            <input type="checkbox" checked name="ingredient" value="dosa rice" />
-            <div class="btn btn-sık"><span>Dosa Rice</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="wheat flour" />
-            <div class="btn btn-sık"><span>Wheat Flour</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="bread" />
-            <div class="btn btn-sık"><span>Bread</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="rava" />
-            <div class="btn btn-sık"><span>Rava</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="sooji" />
-            <div class="btn btn-sık"><span>Sooji</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="moong dal" />
-            <div class="btn btn-sık"><span>Moong Dal</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="chana dal" />
-            <div class="btn btn-sık"><span>Chana Dal</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="toor dal" />
-            <div class="btn btn-sık"><span>Toor/Tur Dal</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="vermicelli" />
-            <div class="btn btn-sık"><span>Vermicelli</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="sabudana" />
-            <div class="btn btn-sık"><span>Sabudana</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="poha" />
-            <div class="btn btn-sık"><span>Poha</span></div>
-        </label>
-        <label>
-            <input type="checkbox" name="ingredient" value="beaten rice" />
-            <div class="btn btn-sık"><span>Beaten Rice</span></div>
-        </label>
-        <label>
-            <input type="checkbox" checked name="ingredient" value="oil" />
-            <div class="btn btn-sık"><span>Oil</span></div>
-        </label>
-        <br><br><br>
-        <center><div class="btn btn-sık"><input type="submit" value="Submit"></div></center>
-    </div>
-</form>
+            <label>
+                <input type="checkbox" name="ingredient" value="rice" />
+                <div class="btn btn-sık"><span>Rice</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="idli rice" />
+                <div class="btn btn-sık"><span>Idli Rice</span></div>
+            </label>
+            <label>
+                <input type="checkbox" checked name="ingredient" value="dosa rice" />
+                <div class="btn btn-sık"><span>Dosa Rice</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="wheat flour" />
+                <div class="btn btn-sık"><span>Wheat Flour</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="rice flour" />
+                <div class="btn btn-sık"><span>Rice Flour</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="ragi flour" />
+                <div class="btn btn-sık"><span>Ragi Flour</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="besan" />
+                <div class="btn btn-sık"><span>Besan Flour</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="bread" />
+                <div class="btn btn-sık"><span>Bread</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="rava" />
+                <div class="btn btn-sık"><span>Rava</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="sooji" />
+                <div class="btn btn-sık"><span>Sooji</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="moong dal" />
+                <div class="btn btn-sık"><span>Moong Dal</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="chana dal" />
+                <div class="btn btn-sık"><span>Chana Dal</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="toor dal" />
+                <div class="btn btn-sık"><span>Toor/Tur Dal</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="vermicelli" />
+                <div class="btn btn-sık"><span>Vermicelli</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="sabudana" />
+                <div class="btn btn-sık"><span>Sabudana</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="poha" />
+                <div class="btn btn-sık"><span>Poha</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="beaten rice" />
+                <div class="btn btn-sık"><span>Beaten Rice</span></div>
+            </label>
+            <label>
+                <input type="checkbox" checked name="ingredient" value="oil" />
+                <div class="btn btn-sık"><span>Oil</span></div>
+            </label>
+            <br><br><br>
+            <center>
+                <div class="btn btn-sık"><input type="submit" value="Submit"></div>
+            </center>
+        </div>
+    </form>
 </body>
+<footer>
+    <center>
+        <p>
+            <font style="font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Developed by
+                <b>Ranjith K S</b></font></a>
+        </p>
+    </center>
+</footer>
 
 </html>
