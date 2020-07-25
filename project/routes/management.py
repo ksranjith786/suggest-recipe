@@ -52,7 +52,7 @@ def queryRecipe(name: str):
         recipes.append(recipe)
     
     #print(recipes)
-    return render_template('recipes.html',
+    return render_template('recipes_v0.html',
         recipes = recipes
     )
 """

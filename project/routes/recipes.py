@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 from sites.soup.ingredients import IngredientsExtractor
 from database.database import queryIngredientsFromDB
 import random
+import ast
 
 recipes_bp = Blueprint('recipes', __name__, url_prefix='/recipes')
 
@@ -34,7 +35,9 @@ def recipes():
     for result in rs:
         recipe = dict()
         recipe['id'] = result.id
-        recipe['name'] = result.name.strip().lower().replace('recipe', '').capitalize()
+        namesList = result.name.lower().replace('recipe', '').split('|')
+        namesList = [name.strip().capitalize() for name in namesList]
+        recipe['name'] = namesList
         recipe['url'] = result.url
         recipe['type'] = result.type.capitalize()
         recipe['ingredients'] = result.ingredients
@@ -42,6 +45,10 @@ def recipes():
         recipe['provider'] = result.provider
         recipe['color1'] = colors[random.randint(0, len(colors)/2)]
         recipe['color2'] = colors[random.randint(len(colors)/2, len(colors)- 1)]
+        #ingredientsList = result.ingredients[2:-2].split('\', \'')
+        ingredientsList = ast.literal_eval(result.ingredients)
+        recipe['givenIngredientsCount'] = len(ingredients)
+        recipe['ingredientsCount'] = len(ingredientsList)
 
         recipes.append(recipe)
     

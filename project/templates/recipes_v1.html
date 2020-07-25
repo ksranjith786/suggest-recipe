@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <link href="../static/css/recipes.css" rel="stylesheet">
+  <script src="../static/scripts/recipes.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    .column {
+      float: left;
+      width: 20%;
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .containerTab {
+      width: 45%;
+      padding: 20px;
+      color: white;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Closable button inside the image */
+    .closebtn {
+      float: right;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- The grid: three columns -->
+  {% for recipe in recipes %}
+
+  <div class="row">
+    <div class="column" onclick="openTab('{{recipe.id}}');" style="background:{{recipe.color1}};">{{recipe.name}}
+    </div>
+  </div>
+
+  <!-- The expanding grid (hidden by default) -->
+  <div id="{{recipe.id}}" class="containerTab" style="display:none;background:{{recipe.color2}}">
+    <!-- If you want the ability to close the container, add a close button -->
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+    <h2><a href="{{recipe.url}}" style="background:{{recipe.color1}};">View Recipe</a></h2>
+    <p><b>Ingredients: </b> {{recipe.ingredients}}</p>
+  </div>
+
+  {% endfor %}
+</body>
+
+</html>

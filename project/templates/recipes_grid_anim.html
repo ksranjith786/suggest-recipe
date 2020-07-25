@@ -6,11 +6,10 @@
     }
 
     #pricing-table {
-        margin: 20px auto;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin: 50px auto;
         text-align: center;
-        width: auto;
+        width: 892px;
+        /* total computed width = 222 x 3 + 226 */
     }
 
     #pricing-table .plan {
@@ -24,18 +23,13 @@
         /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */
         float: left;
         position: relative;
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 3px;
-        margin-bottom: 3px;
     }
 
     /* --------------- */
 
     #pricing-table h3 {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-        font-size: 22px;
-        font-weight: bolder;
+        font-size: 20px;
+        font-weight: normal;
         padding: 20px;
         margin: -20px -20px 50px -20px;
         background-color: #eee;
@@ -76,18 +70,16 @@
     #pricing-table li {
         border-top: 1px solid #ddd;
         padding: 10px 0;
-        font-size: small;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
     /* --------------- */
 
-    #pricing-table .viewrecipe {
+    #pricing-table .signup {
         position: relative;
         padding: 8px 20px;
         margin: 20px 0 0 0;
         color: #fff;
-        font: bold 14px Serif;
+        font: bold 14px Arial, Helvetica;
         text-transform: uppercase;
         text-decoration: none;
         display: inline-block;
@@ -107,7 +99,7 @@
         box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
     }
 
-    #pricing-table .viewrecipe:hover {
+    #pricing-table .signup:hover {
         background-color: #62bc30;
         background-image: -moz-linear-gradient(#62bc30, #72ce3f);
         background-image: -webkit-gradient(linear, left top, left bottom, from(#62bc30), to(#72ce3f));
@@ -117,8 +109,8 @@
         background-image: linear-gradient(#62bc30, #72ce3f);
     }
 
-    #pricing-table .viewrecipe:active,
-    #pricing-table .viewrecipe:focus {
+    #pricing-table .signup:active,
+    #pricing-table .signup:focus {
         background: #62bc30;
         top: 2px;
         -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
@@ -154,7 +146,7 @@
         border-radius: 5px;
         -moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
         -webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
-        box-shadow: 25px 0 15px -15px rgba(0, 0, 0, .15), -25px 0 15px -15px rgba(0, 0, 0, .15);
+        box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
     }
 </style>
 
@@ -163,7 +155,7 @@
         {% for recipe in recipes %}
         <div class="plan">
             <h3>{{recipe.name[0]}}<span>{{recipe.givenIngredientsCount}}/{{recipe.ingredientsCount}}</span></h3>
-            <a class="viewrecipe" href="{{recipe.url}}">View Recipe</a>
+            <a class="signup" href="{{recipe.url}}">View Recipe</a>
             <ul>
                 {% for name in recipe.name[1:] %}
                 <li><b>{{name}}</b></li>
