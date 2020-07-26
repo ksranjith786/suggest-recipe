@@ -4,9 +4,6 @@ from bs4 import BeautifulSoup
 from sites.soup.ingredients import IngredientsExtractor
 from database.database import addRecipeToDB
 
-#URL='https://hebbarskitchen.com'
-#PROVIDER = "Hebbar's Kitchen"
-
 def run(url, provider):
     print(url, ";", provider)
 
@@ -127,7 +124,7 @@ def run(url, provider):
     return True
 
 if __name__ == "__main__":
-    url = "https://hebbarskitchen.com/recipes/breakfast-recipes/"
-    provider = "Hebbar's Kitchen"
+    url = ""
+    provider = ""
 
     run(url, provider)

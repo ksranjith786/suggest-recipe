@@ -6,10 +6,11 @@ from routes.home import home_bp
 from routes.ingredients import ingredients_bp
 from routes.recipes import recipes_bp
 from routes.management import management_bp
+from routes.test import test_bp
 
 from database.database import createRecipeDB
 
-blueprints = (home_bp, ingredients_bp, recipes_bp, management_bp)
+blueprints = (home_bp, ingredients_bp, recipes_bp, management_bp, test_bp)
 
 def create_app():
     app = Flask(__name__)

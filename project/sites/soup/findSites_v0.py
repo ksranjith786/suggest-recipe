@@ -4,9 +4,6 @@ from sites.soup.ingredients import IngredientsExtractor
 
 from database.database import addRecipeToDB
 
-#URL='https://hebbarskitchen.com'
-#PROVIDER = "Hebbar's Kitchen"
-
 def run(url, provider):
     #print(url, provider)
 
