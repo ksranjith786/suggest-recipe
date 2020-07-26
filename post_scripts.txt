@@ -1,4 +1,0 @@
-# Delete the (lady's) word rows which actually causing issue to ast.literal_eval
-DELETE FROM recipes where id in (655, 934)
-# Delete (masala dosa batter recipe in mixie) row 201 which duplicates with 1005
-DELETE FROM recipes where id in (201)
