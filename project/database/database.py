@@ -38,8 +38,14 @@ ses = Session()
 
 def initDB(databaseURL):
     global engine, db_session
-    #engine = create_engine(databaseURL)
-    engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
+
+    if "postgresql" in databaseURL:
+        engine = create_engine(databaseURL)
+    elif "sqlite":
+        engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
+    else:
+        engine = create_engine(databaseURL)
+    
     db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
     return db_session
 # end initDB
