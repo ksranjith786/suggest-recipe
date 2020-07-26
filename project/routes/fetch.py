@@ -2,14 +2,9 @@ from flask import Blueprint, render_template, render_template_string, request
 from database.database import createRecipeDB, addRecipeToDB, queryRecipeFromDB, queryIngredientsFromDB, deleteRecipeFromDB
 from sites.soup.findSites import run
 
-test_bp = Blueprint('test', __name__, url_prefix='/test')
+fetch_bp = Blueprint('fetch', __name__, url_prefix='/fetch')
 
-@test_bp.route('/recipe/<string:name>', methods=['GET'])
-def queryRecipe(name: str):
-    rs = queryRecipeFromDB(name)
-    if rs is None:
-        return "No such recipe to fetch! or No such recipe table/rows exists"
-    
+def getRecipesFromResult(rs):
     recipes = []
     for result in rs:
         recipe = dict()
@@ -22,7 +17,16 @@ def queryRecipe(name: str):
         recipe['provider'] = result.provider
 
         recipes.append(recipe)
+    return recipes
+# end getRecipesFromResult
+
+@fetch_bp.route('/recipe/name/<string:_name>', methods=['GET'])
+def queryRecipe(_name: str):
+    rs = queryRecipeFromDB("name", _name)
+    if rs is None:
+        return "No such recipe to fetch! or No such recipe table/rows exists"
     
+    recipes = getRecipesFromResult(rs)
     #print(recipes)
     return render_template('recipes_v0.html',
         recipes = recipes
@@ -45,7 +49,20 @@ def queryRecipe(name: str):
 """
 # end queryRecipe
 
-@test_bp.route('/recipe/delete/<int:id>', methods=['GET'])
+@fetch_bp.route('/recipe/type/<string:_type>', methods=['GET'])
+def queryType(_type: str):
+    rs = queryRecipeFromDB("type", _type)
+    if rs is None:
+        return "No such recipe types to fetch! or No such recipe table/rows exists"
+    
+    recipes = getRecipesFromResult(rs)
+    #print(recipes)
+    return render_template('recipes_v0.html',
+        recipes = recipes
+    )
+# end queryType
+
+@fetch_bp.route('/recipe/delete/<int:id>', methods=['GET'])
 def deleteRecipe(id: int):
     retVal = deleteRecipeFromDB(id)
     if retVal is False:

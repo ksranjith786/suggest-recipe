@@ -38,8 +38,8 @@ ses = Session()
 
 def initDB(databaseURL):
     global engine, db_session
-    engine = create_engine(databaseURL)
-    #engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
+    #engine = create_engine(databaseURL)
+    engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
     db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
     return db_session
 # end initDB
@@ -65,7 +65,7 @@ def addRecipeToDB(name="", url="", type="", ingredients="", imageURL="", provide
     return True
 # end addRecipeToDB
 
-def queryRecipeFromDB(name=""):
+def queryRecipeFromDB(colName="", value=""):
     #print(name)
     if db_session == None:
         initDB()
@@ -73,8 +73,14 @@ def queryRecipeFromDB(name=""):
     #noOfRecords = 0
 
     try:
-        look_for = '%{0}%'.format(name)
-        rs = db_session.query(Recipe).filter(Recipe.name.ilike(look_for))
+        look_for = '%{0}%'.format(value)
+        rs = None
+        if colName == "name":
+            rs = db_session.query(Recipe).filter(Recipe.name.ilike(look_for))
+        elif colName == "type":
+            rs = db_session.query(Recipe).filter(Recipe.type.ilike(look_for))
+        else:
+            pass
         #print(rs)
         #for recipe in rs:
             #print(repr(recipe))

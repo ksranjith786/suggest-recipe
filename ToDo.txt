@@ -9,3 +9,4 @@
 5. Gather as much of data from a Website
 6. Persist it for better accessing
 7. Modeling recommendation Engine
+8. The type of recipe is being unique, may be use "articleSection" rather "article:section"
