@@ -21,7 +21,7 @@ cd suggest-recipe
 ```
 python -m venv venv
 ```
-Note: _If virutal environment **venv** not available then install it using **python -m pip venv**_
+Note: _If virtual environment **venv** not available then install it using **python -m pip install virtualenv**_
 
 ### Switch/Activate to venv
 ```
