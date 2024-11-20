@@ -5,9 +5,9 @@ It is deployed on Heroku cloud platform.
 
 ## LIVE on
 
-https://suggest-recipe.herokuapp.com
+https://suggest-recipe.onrender.com
 
-Please click [here](https://suggest-recipe.herokuapp.com) to view the LIVE app.
+Please click [here](https://suggest-recipe.onrender.com) to view the LIVE app.
 
 ## Credit To
 The idea was proposed by Madhuri and Suresh.
