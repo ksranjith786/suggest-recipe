@@ -42,7 +42,7 @@ def initDB(databaseURL):
     if "postgresql" in databaseURL:
         engine = create_engine(databaseURL)
     elif "sqlite" in databaseURL:
-        engine = create_engine(databaseURL, convert_unicode=True, connect_args={'check_same_thread': False})
+        engine = create_engine(databaseURL, connect_args={'check_same_thread': False})
     else:
         engine = create_engine(databaseURL)
     

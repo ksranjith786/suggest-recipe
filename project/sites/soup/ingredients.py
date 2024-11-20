@@ -65,7 +65,9 @@ class IngredientsExtractor:
             for div in div.find_all('div', {'class': "wprm-recipe-ingredient-group"}):
                 #print(div.text)
                 for list_item in div.findAll('li', {'class': "wprm-recipe-ingredient"}):
-                    self.INGREDIENTS.append(list_item.text)
+                    value = list_item.text.replace("▢", "").strip()
+                    # print(f'getIngredients: list_item: {list_item.text} and value: {value}')
+                    self.INGREDIENTS.append(value)
         
         return self.INGREDIENTS
 
