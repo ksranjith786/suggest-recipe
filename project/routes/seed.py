@@ -6,7 +6,7 @@ seed_bp = Blueprint('seed', __name__, url_prefix='/seed')
 
 @seed_bp.route('/recipes', methods=['GET'])
 def seedRecipes():
-  with open("../static/csv/recipes.csv", mode="r") as file:
+  with open("static/csv/recipes.csv", mode="r") as file:
         data = csv.DictReader(file)
         retVal = addRecipeToDB(
                 name = name,
