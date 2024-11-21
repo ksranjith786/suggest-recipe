@@ -14,10 +14,10 @@
         .wrap {
             padding: 15px;
             background-color: #424242;
-            width: 500px;
-            height: 610px;
+            width: 74%;
+            height: 90%;
             border-radius: 12px;
-            position: absolute;
+            position: center;
             /*it can be fixed too*/
             left: 0;
             right: 0;
@@ -61,7 +61,7 @@
             background-color: white;
             border: 2px solid #f44336 !important;
             box-shadow: 0 3px #d32f2f !important;
-            min-width: 150px;
+            min-width: 135px;
             border-radius: 20px;
         }
 
@@ -171,6 +171,8 @@
 </head>
 
 <body>
+    <br />
+    <br />
     <form action="/recipes" method="POST">
         <div class="wrap">
             <label style="font-size: 22px;font-weight: bold;padding:10px; color: white;">Meal Type</label>
@@ -207,7 +209,14 @@
             <label style="font-size: 22px;font-weight: bold;padding:10px;color: white;">Select available
                 Ingredient(s)</label>
             <br />
-
+            <label>
+                <input type="checkbox" name="ingredient" value="millet" />
+                <div class="btn btn-sık"><span>Millets</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="oats" />
+                <div class="btn btn-sık"><span>Oats</span></div>
+            </label>
             <label>
                 <input type="checkbox" name="ingredient" value="rice" />
                 <div class="btn btn-sık"><span>Rice</span></div>
@@ -217,7 +226,7 @@
                 <div class="btn btn-sık"><span>Idli Rice</span></div>
             </label>
             <label>
-                <input type="checkbox" checked name="ingredient" value="dosa rice" />
+                <input type="checkbox" name="ingredient" value="dosa rice" />
                 <div class="btn btn-sık"><span>Dosa Rice</span></div>
             </label>
             <label>
@@ -231,6 +240,10 @@
             <label>
                 <input type="checkbox" name="ingredient" value="ragi flour" />
                 <div class="btn btn-sık"><span>Ragi Flour</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="corn flour" />
+                <div class="btn btn-sık"><span>Corn Flour</span></div>
             </label>
             <label>
                 <input type="checkbox" name="ingredient" value="besan" />
@@ -277,15 +290,40 @@
                 <div class="btn btn-sık"><span>Poha</span></div>
             </label>
             <label>
-                <input type="checkbox" name="ingredient" value="beaten rice" />
-                <div class="btn btn-sık"><span>Beaten Rice</span></div>
-            </label>
-            <label>
                 <input type="checkbox" checked name="ingredient" value="oil" />
                 <div class="btn btn-sık"><span>Oil</span></div>
             </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="paneer" />
+                <div class="btn btn-sık"><span>Paneer</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="peas" />
+                <div class="btn btn-sık"><span>Peas</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="tomato" />
+                <div class="btn btn-sık"><span>Tomato</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="onion" />
+                <div class="btn btn-sık"><span>Onion</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="badam" />
+                <div class="btn btn-sık"><span>Badam</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="cashew" />
+                <div class="btn btn-sık"><span>Cashews</span></div>
+            </label>
+            <label>
+                <input type="checkbox" name="ingredient" value="pumpkin seeds" />
+                <div class="btn btn-sık"><span>Pumpkin Seeds</span></div>
+            </label>
             <br><br><br>
             <center>
+                <label style="font-size: 15px;font-weight: bold;padding:10px;color: white;">Ready to Cook.!</label>
                 <div class="btn btn-sık"><input type="submit" value="Submit"></div>
             </center>
         </div>
@@ -295,7 +333,8 @@
     <center>
         <p>
             <font style="font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Developed by
-                <b>Ranjith K S</b></font></a>
+                <b>Ranjith K S</b>
+            </font></a>
         </p>
     </center>
 </footer>

@@ -43,8 +43,8 @@ def recipes():
         recipe['ingredients'] = result.ingredients
         recipe['imageURL'] = result.imageURL
         recipe['provider'] = result.provider
-        recipe['color1'] = colors[random.randint(0, len(colors)/2)]
-        recipe['color2'] = colors[random.randint(len(colors)/2, len(colors)- 1)]
+        recipe['color1'] = colors[random.randint(0, len(colors)//2)]
+        recipe['color2'] = colors[random.randint(len(colors)//2, len(colors)- 1)]
         #ingredientsList = result.ingredients[2:-2].split('\', \'')
         ingredientsList = ast.literal_eval(result.ingredients)
         recipe['givenIngredientsCount'] = len(ingredients)
