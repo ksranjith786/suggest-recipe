@@ -1,5 +1,5 @@
 import csv
-from flask import Blueprint, request
+from flask import Blueprint, redirect, url_for
 from database.database import addRecipeToDB
 
 seed_bp = Blueprint('seed', __name__, url_prefix='/seed')
@@ -19,4 +19,6 @@ def seedRecipes():
           )
       if retVal == False:
           print("Exception caught while adding recipe details to Database")
-          return False
+          return {"message": "Failed"}
+      
+  return redirect(url_for('ingredients.ingredients'))
