@@ -1,179 +1,51 @@
-<html>
-<title>Recipes</title>
-<style>
-    body {
-        background: #303030;
-    }
+{% extends "base.html" %}
 
-    #pricing-table {
-        margin: 20px auto;
-        margin-left: 20px;
-        margin-right: 20px;
-        text-align: center;
-        width: auto;
-    }
+{% block title %}Your recipes — Suggest Recipe{% endblock %}
 
-    #pricing-table .plan {
-        font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
-        text-shadow: 0 1px rgba(255, 255, 255, .8);
-        background: #fff;
-        border: 1px solid #ddd;
-        color: #333;
-        padding: 20px;
-        width: 180px;
-        height: 290px;
-        float: left;
-        position: relative;
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-    }
-
-    /* --------------- */
-
-    #pricing-table h3 {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-        font-size: 24px;
-        font-weight: bolder;
-        padding: 10px;
-        margin: -20px -20px 50px -20px;
-        background-color: #eee;
-        background-image: -moz-linear-gradient(#fff, #eee);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-        background-image: -webkit-linear-gradient(#fff, #eee);
-        background-image: -o-linear-gradient(#fff, #eee);
-        background-image: -ms-linear-gradient(#fff, #eee);
-        background-image: linear-gradient(#fff, #eee);
-        text-transform: uppercase;
-    }
-
-    #pricing-table h3 span {
-        display: block;
-        font: bold 30px/100px Georgia, Serif;
-        color: #777;
-        background: #fff;
-        border: 5px solid #fff;
-        height: 100px;
-        width: 100px;
-        margin: 10px auto -65px;
-        -moz-border-radius: 100px;
-        -webkit-border-radius: 100px;
-        border-radius: 100px;
-        -moz-box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
-        -webkit-box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
-        box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
-    }
-
-    /* --------------- */
-
-    #pricing-table ul {
-        margin: 20px 0 0 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    #pricing-table li {
-        border-top: 1px solid #ddd;
-        padding: 5px 0;
-        font-size: small;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-
-    /* --------------- */
-
-    #pricing-table .viewrecipe {
-        position: relative;
-        padding: 8px 20px;
-        margin: 20px 0 0 0;
-        color: #fff;
-        font: bold 14px Serif;
-        text-transform: uppercase;
-        text-decoration: none;
-        display: inline-block;
-        background-color: #72ce3f;
-        background-image: -moz-linear-gradient(#72ce3f, #62bc30);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#72ce3f), to(#62bc30));
-        background-image: -webkit-linear-gradient(#72ce3f, #62bc30);
-        background-image: -o-linear-gradient(#72ce3f, #62bc30);
-        background-image: -ms-linear-gradient(#72ce3f, #62bc30);
-        background-image: linear-gradient(#72ce3f, #62bc30);
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
-        -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
-        -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
-    }
-
-    #pricing-table .viewrecipe:hover {
-        background-color: #62bc30;
-        background-image: -moz-linear-gradient(#62bc30, #72ce3f);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#62bc30), to(#72ce3f));
-        background-image: -webkit-linear-gradient(#62bc30, #72ce3f);
-        background-image: -o-linear-gradient(#62bc30, #72ce3f);
-        background-image: -ms-linear-gradient(#62bc30, #72ce3f);
-        background-image: linear-gradient(#62bc30, #72ce3f);
-    }
-
-    #pricing-table .viewrecipe:active,
-    #pricing-table .viewrecipe:focus {
-        background: #62bc30;
-        top: 2px;
-        -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
-        -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
-        box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
-    }
-
-    /* --------------- */
-
-    .clear:before,
-    .clear:after {
-        content: "";
-        display: table
-    }
-
-    .clear:after {
-        clear: both
-    }
-
-    .clear {
-        zoom: 1
-    }
-
-    .plan:hover {
-        transform: scale(1.05);
-        transition: all 250ms ease;
-        z-index: 2;
-        top: -13px;
-        border-width: 3px;
-        padding: 30px 20px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        -moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
-        -webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
-        box-shadow: 25px 0 15px -15px rgba(0, 0, 0, .15), -25px 0 15px -15px rgba(0, 0, 0, .15);
-    }
-</style>
-
-<body>
-    <div id="pricing-table" class="clear">
-        {% for recipe in recipes %}
-        <div class="plan">
-            <h3>{{recipe.name[0]}}<span>{{recipe.givenIngredientsCount}}/{{recipe.ingredientsCount}}</span></h3>
-            <a class="viewrecipe" href="{{recipe.url}}">View Recipe</a>
-            <ul>
-                {% for name in recipe.name[1:] %}
-                <li><b>{{name}}</b></li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endfor %}
+{% block content %}
+<header class="results-header results-hero">
+    <div>
+        <span class="hero__eyebrow">Vegetarian picks</span>
+        <h1 class="results-header__title">Your best pantry matches</h1>
+        <p class="results-header__meta">
+            Showing <strong id="recipe-loaded-count">{{ recipes|length }}</strong>
+            of <strong>{{ total }}</strong> recipes, ranked by closest fit.
+        </p>
     </div>
-</body>
-<footer>
-    <center><p><font style="font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Developed by <b>Ranjith K S</b></font></a></p></center>
-</footer>
-</html>
+    <div class="results-scorecard" aria-label="Result summary">
+        <span>Top batch</span>
+        <strong>{{ recipes|length }}</strong>
+        <small>served fresh</small>
+    </div>
+</header>
+
+<div class="recipe-grid" id="recipe-grid">
+    {% include 'partials/recipe_cards.html' %}
+</div>
+
+<div class="recipe-scroll-footer" id="recipe-scroll-footer">
+    {% if has_more %}
+    <div class="recipe-scroll-sentinel" id="recipe-scroll-sentinel"
+         data-more-url="{{ url_for('recipes.recipes_more') }}"
+         data-next-page="{{ next_page }}"
+         data-has-more="true"
+         aria-hidden="true"></div>
+    <p class="load-more-status" id="load-more-status" role="status" aria-live="polite">
+        <span class="load-more-status__idle">Scroll for more recipes…</span>
+        <span class="load-more-status__loading" hidden>Loading more…</span>
+        <span class="load-more-status__done" hidden>You’ve seen all matches.</span>
+        <span class="load-more-status__error" hidden>Could not load more. Refresh and search again.</span>
+    </p>
+    {% else %}
+    <p class="load-more-status load-more-status--done" role="status">All matches shown.</p>
+    {% endif %}
+</div>
+
+<p class="results-back">
+    <a class="btn-ghost" href="{{ url_for('ingredients.ingredients') }}">← Back to pantry</a>
+</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/recipes.js') }}" defer></script>
+{% endblock %}

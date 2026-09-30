@@ -1,0 +1,39 @@
+{% for recipe in recipes %}
+<article class="recipe-card">
+    <div class="recipe-card__media">
+        <div class="recipe-card__placeholder" aria-hidden="true">
+            <span class="recipe-card__placeholder-icon">Veg</span>
+            <span class="recipe-card__placeholder-letter">{{ recipe.name[0][0] if recipe.name else '?' }}</span>
+        </div>
+        {% if recipe.imageURL %}
+        <img class="recipe-card__img"
+             src="{{ recipe.imageURL }}"
+             alt="{{ recipe.name[0] }}"
+             loading="lazy"
+             decoding="async"
+             referrerpolicy="no-referrer">
+        {% endif %}
+        <span class="recipe-card__veg" title="Vegetarian recipe">Veg</span>
+        <div class="recipe-card__match" title="Pantry ingredients selected vs recipe total">
+            <span>{{ recipe.givenIngredientsCount }}/{{ recipe.ingredientsCount }}</span>
+            match
+        </div>
+    </div>
+    <div class="recipe-card__body">
+        <h2 class="recipe-card__title">{{ recipe.name[0] }}</h2>
+        {% if recipe.provider %}
+        <p class="recipe-card__provider">{{ recipe.provider }}</p>
+        {% endif %}
+        <ul class="recipe-card__ingredients">
+            {% for name in recipe.name[1:] %}
+            <li><b>{{ name }}</b></li>
+            {% endfor %}
+        </ul>
+        {% if recipe.url %}
+        <a class="btn-recipe" href="{{ recipe.url }}" target="_blank" rel="noopener noreferrer">View recipe →</a>
+        {% else %}
+        <span class="btn-recipe btn-recipe--disabled" aria-disabled="true">Recipe unavailable</span>
+        {% endif %}
+    </div>
+</article>
+{% endfor %}

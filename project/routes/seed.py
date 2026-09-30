@@ -1,12 +1,17 @@
 import csv
-from flask import Blueprint, redirect, url_for
+import os
+from flask import Blueprint, redirect, url_for, current_app
 from database.database import addRecipeToDB
 
 seed_bp = Blueprint('seed', __name__, url_prefix='/seed')
 
+def _recipes_csv_path():
+    return os.path.join(current_app.root_path, 'static', 'csv', 'recipes.csv')
+
 @seed_bp.route('/recipes', methods=['GET'])
 def seedRecipes():
-  with open("static/csv/recipes.csv", mode="r") as file:
+  csv_path = _recipes_csv_path()
+  with open(csv_path, mode="r", encoding="utf-8") as file:
     recipes = csv.DictReader(file)
     for recipe in recipes:
       retVal = addRecipeToDB(
