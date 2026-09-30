@@ -9,7 +9,9 @@
 
     function chipLabel(input) {
         var label = input.closest('.chip');
+        var name = label && label.querySelector('.ingredient-tile__name');
         var face = label && label.querySelector('.chip__face');
+        if (name) return name.textContent.trim();
         return face ? face.textContent.trim() : input.value;
     }
 

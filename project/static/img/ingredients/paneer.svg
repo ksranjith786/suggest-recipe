@@ -1,0 +1,19 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 260' role='img' aria-label='Paneer'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop stop-color='#fff7d8' offset='0'/>
+      <stop stop-color='#f2df9e' offset='1'/>
+    </linearGradient>
+    <filter id='shadow' x='-20%' y='-20%' width='140%' height='140%'>
+      <feDropShadow dx='0' dy='18' stdDeviation='18' flood-color='#08110b' flood-opacity='.28'/>
+    </filter>
+  </defs>
+  <rect width='320' height='260' rx='44' fill='url(#bg)'/>
+  <circle cx='66' cy='48' r='78' fill='rgba(255,255,255,.24)'/>
+  <circle cx='270' cy='218' r='96' fill='rgba(8,17,11,.16)'/>
+  <g filter='url(#shadow)'>
+    
+      <g><rect x='102' y='126' width='58' height='48' rx='9' fill='rgba(255,255,255,.62)' transform='rotate(0 131 150)'/><path d='M112 140h34' stroke='rgba(0,0,0,.12)' stroke-width='4' stroke-linecap='round'/><rect x='158' y='105' width='58' height='48' rx='9' fill='rgba(255,255,255,.62)' transform='rotate(11 187 129)'/><path d='M168 119h34' stroke='rgba(0,0,0,.12)' stroke-width='4' stroke-linecap='round'/><rect x='203' y='139' width='58' height='48' rx='9' fill='rgba(255,255,255,.62)' transform='rotate(-6 232 163)'/><path d='M213 153h34' stroke='rgba(0,0,0,.12)' stroke-width='4' stroke-linecap='round'/><rect x='125' y='190' width='58' height='48' rx='9' fill='rgba(255,255,255,.62)' transform='rotate(-9 154 214)'/><path d='M135 204h34' stroke='rgba(0,0,0,.12)' stroke-width='4' stroke-linecap='round'/><rect x='184' y='198' width='58' height='48' rx='9' fill='rgba(255,255,255,.62)' transform='rotate(10 213 222)'/><path d='M194 212h34' stroke='rgba(0,0,0,.12)' stroke-width='4' stroke-linecap='round'/></g>
+    
+  </g>
+</svg>

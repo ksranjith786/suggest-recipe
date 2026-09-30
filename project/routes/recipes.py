@@ -16,7 +16,12 @@ ALLOWED_INGREDIENTS = {
     'rice flour', 'ragi flour', 'corn flour', 'besan', 'bread', 'rava',
     'sooji', 'moong dal', 'chana dal', 'toor dal', 'vermicelli', 'noodles',
     'sabudana', 'poha', 'oil', 'paneer', 'peas', 'tomato', 'onion',
-    'badam', 'cashew', 'pumpkin seeds',
+    'badam', 'cashew', 'pumpkin seeds', 'urad dal', 'potato', 'carrot',
+    'capsicum', 'cabbage', 'beans', 'coconut', 'curd', 'ginger', 'garlic',
+    'green chilli', 'red chilli', 'curry leaves', 'coriander', 'cumin',
+    'mustard seeds', 'turmeric', 'hing', 'methi', 'ghee', 'butter', 'milk',
+    'sugar', 'lemon', 'tamarind', 'peanut', 'sesame seeds', 'maida',
+    'cheese',
 }
 
 
