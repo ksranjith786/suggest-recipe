@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title | default('Something went wrong') }} — Suggest Recipe{% endblock %}
+
+{% block content %}
+<div class="glass-panel error-panel">
+    <div class="error-panel__art" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <span class="hero__eyebrow">Kitchen note</span>
+    <h1 class="error-panel__title">{{ title | default('Something went wrong') }}</h1>
+    <p class="error-panel__message">{{ message }}</p>
+    <a class="btn-primary" href="{{ url_for('ingredients.ingredients') }}">Back to pantry</a>
+</div>
+{% endblock %}

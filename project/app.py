@@ -17,6 +17,7 @@ def create_app():
     app = Flask(__name__)
 
     get_config(app)
+    harden_app(app)
 
     create_db()
 
@@ -33,7 +34,35 @@ def get_config(app):
         app.debug = True
     else:
         app.debug = False
+
+    app.config.update(
+        SESSION_COOKIE_HTTPONLY=True,
+        SESSION_COOKIE_SAMESITE='Lax',
+        SESSION_COOKIE_SECURE=envFLASK != 'development',
+    )
 # end get_config
+
+def harden_app(app):
+    @app.after_request
+    def add_security_headers(response):
+        response.headers.setdefault('X-Content-Type-Options', 'nosniff')
+        response.headers.setdefault('X-Frame-Options', 'DENY')
+        response.headers.setdefault('Referrer-Policy', 'strict-origin-when-cross-origin')
+        response.headers.setdefault('Permissions-Policy', 'geolocation=(), microphone=(), camera=()')
+        response.headers.setdefault(
+            'Content-Security-Policy',
+            "default-src 'self'; "
+            "script-src 'self'; "
+            "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; "
+            "font-src 'self' https://fonts.gstatic.com; "
+            "img-src 'self' https: data:; "
+            "connect-src 'self'; "
+            "base-uri 'self'; "
+            "form-action 'self'; "
+            "frame-ancestors 'none';"
+        )
+        return response
+# end harden_app
 
 def create_db():
     databaseURL = environ.get('DATABASE_URL')
