@@ -88,17 +88,36 @@
                 ('ragi flour', 'Ragi Flour'), ('corn flour', 'Corn Flour'),
                 ('besan', 'Besan Flour'), ('bread', 'Bread'), ('rava', 'Rava'),
                 ('sooji', 'Sooji'), ('moong dal', 'Moong Dal'), ('chana dal', 'Chana Dal'),
-                ('toor dal', 'Toor/Tur Dal'), ('vermicelli', 'Vermicelli'),
+                ('toor dal', 'Toor/Tur Dal'), ('urad dal', 'Urad Dal'), ('vermicelli', 'Vermicelli'),
                 ('noodles', 'Noodles'), ('sabudana', 'Sabudana'), ('poha', 'Poha'),
                 ('oil', 'Oil', True), ('paneer', 'Paneer'), ('peas', 'Peas'),
                 ('tomato', 'Tomato'), ('onion', 'Onion'), ('badam', 'Badam'),
-                ('cashew', 'Cashews'), ('pumpkin seeds', 'Pumpkin Seeds')
+                ('cashew', 'Cashews'), ('pumpkin seeds', 'Pumpkin Seeds'),
+                ('potato', 'Potato'), ('carrot', 'Carrot'), ('capsicum', 'Capsicum'),
+                ('cabbage', 'Cabbage'), ('beans', 'Beans'), ('coconut', 'Coconut'),
+                ('curd', 'Curd'), ('ginger', 'Ginger'), ('garlic', 'Garlic'),
+                ('green chilli', 'Green Chilli'), ('red chilli', 'Red Chilli'),
+                ('curry leaves', 'Curry Leaves'), ('coriander', 'Coriander'),
+                ('cumin', 'Cumin'), ('mustard seeds', 'Mustard Seeds'),
+                ('turmeric', 'Turmeric'), ('hing', 'Hing'), ('methi', 'Methi'),
+                ('ghee', 'Ghee'), ('butter', 'Butter'), ('milk', 'Milk'),
+                ('sugar', 'Sugar'), ('lemon', 'Lemon'), ('tamarind', 'Tamarind'),
+                ('peanut', 'Peanut'), ('sesame seeds', 'Sesame Seeds'),
+                ('maida', 'Maida'), ('cheese', 'Cheese')
             ] %}
             {% for item in items %}
-            <label class="chip">
+            <label class="chip ingredient-tile ingredient-tile--{{ item[0]|replace(' ', '-') }}">
                 <input type="checkbox" class="chip__input" name="ingredient" value="{{ item[0] }}"
                     {% if item|length > 2 and item[2] %}checked{% endif %}>
-                <span class="chip__face">{{ item[1] }}</span>
+                <span class="chip__face">
+                    <span class="ingredient-tile__photo" aria-hidden="true">
+                        <img src="{{ url_for('static', filename='img/ingredients/' ~ item[0]|replace(' ', '-') ~ '.svg') }}"
+                             alt=""
+                             loading="lazy"
+                             decoding="async">
+                    </span>
+                    <span class="ingredient-tile__name">{{ item[1] }}</span>
+                </span>
             </label>
             {% endfor %}
         </div>

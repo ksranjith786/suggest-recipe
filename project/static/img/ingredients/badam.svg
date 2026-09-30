@@ -1,0 +1,19 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 260' role='img' aria-label='Badam'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop stop-color='#c18b54' offset='0'/>
+      <stop stop-color='#8a5a30' offset='1'/>
+    </linearGradient>
+    <filter id='shadow' x='-20%' y='-20%' width='140%' height='140%'>
+      <feDropShadow dx='0' dy='18' stdDeviation='18' flood-color='#08110b' flood-opacity='.28'/>
+    </filter>
+  </defs>
+  <rect width='320' height='260' rx='44' fill='url(#bg)'/>
+  <circle cx='66' cy='48' r='78' fill='rgba(255,255,255,.24)'/>
+  <circle cx='270' cy='218' r='96' fill='rgba(8,17,11,.16)'/>
+  <g filter='url(#shadow)'>
+    
+      <g><ellipse cx='105' cy='132' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(-8 105 132)'/><path d='M105 116c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='137' cy='109' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(33 137 109)'/><path d='M137 93c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='172' cy='130' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(24 172 130)'/><path d='M172 114c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='211' cy='143' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(15 211 143)'/><path d='M211 127c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='121' cy='184' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(-24 121 184)'/><path d='M121 168c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='162' cy='178' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(-48 162 178)'/><path d='M162 162c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='199' cy='210' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(-42 199 210)'/><path d='M199 194c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/><ellipse cx='138' cy='223' rx='17' ry='30' fill='rgba(255,255,255,.36)' transform='rotate(49 138 223)'/><path d='M138 207c-5 12-4 24 2 35' stroke='rgba(0,0,0,.14)' stroke-width='4' fill='none' stroke-linecap='round'/></g>
+    
+  </g>
+</svg>
