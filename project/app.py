@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+# Render uses `gunicorn --chdir project`. Vercel imports this file from the
+# repo root, so `routes` and `database` are not on the module path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from flask import Flask, Blueprint, render_template
 from os import environ
 
