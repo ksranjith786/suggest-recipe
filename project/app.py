@@ -78,8 +78,8 @@ def register_blueprint(app, blueprints):
     app.add_url_rule('/home', endpoint='home')
     
 # end register_blueprint
+app = create_app()
 
 if __name__ == '__main__':
-    app = create_app()
     app.run()
 # end main()
