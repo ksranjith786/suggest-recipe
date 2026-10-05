@@ -73,6 +73,11 @@ def harden_app(app):
 
 def create_db():
     databaseURL = environ.get('DATABASE_URL')
+    if not databaseURL:
+        raise RuntimeError('DATABASE_URL is not set')
+    # SQLAlchemy 1.3 accepts postgresql://. Render often exposes postgres://.
+    if databaseURL.startswith('postgres://'):
+        databaseURL = 'postgresql://' + databaseURL[len('postgres://'):]
     createRecipeDB(databaseURL)
 # end create_db
 
