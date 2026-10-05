@@ -33,73 +33,101 @@
         <p>We will rank the closest vegetarian matches and show the top recipes first.</p>
     </div>
 
-    <div class="form-section">
-        <div class="form-section__head">
-            <h2 class="form-section__title">Meal type</h2>
-            <p class="form-section__hint">When do you want to cook?</p>
+    <div class="pantry-toolbar">
+        <div class="form-section form-section--meal">
+            <div class="form-section__head">
+                <h2 class="form-section__title">Meal</h2>
+            </div>
+            <div class="chip-grid chip-grid--meal">
+                <label class="chip chip--meal">
+                    <input type="radio" class="chip__input" name="meal" id="breakfast" value="breakfast" checked>
+                    <span class="chip__face">Breakfast</span>
+                </label>
+                <label class="chip chip--meal">
+                    <input type="radio" class="chip__input" name="meal" id="lunch" value="lunch">
+                    <span class="chip__face">Lunch</span>
+                </label>
+                <label class="chip chip--meal">
+                    <input type="radio" class="chip__input" name="meal" id="snacks" value="snacks">
+                    <span class="chip__face">Snacks</span>
+                </label>
+                <label class="chip chip--meal">
+                    <input type="radio" class="chip__input" name="meal" id="dinner" value="dinner">
+                    <span class="chip__face">Dinner</span>
+                </label>
+            </div>
         </div>
-        <div class="chip-grid chip-grid--meal">
-            <label class="chip chip--meal">
-                <input type="radio" class="chip__input" name="meal" id="breakfast" value="breakfast" checked>
-                <span class="chip__face">Breakfast</span>
-            </label>
-            <label class="chip chip--meal">
-                <input type="radio" class="chip__input" name="meal" id="lunch" value="lunch">
-                <span class="chip__face">Lunch</span>
-            </label>
-            <label class="chip chip--meal">
-                <input type="radio" class="chip__input" name="meal" id="snacks" value="snacks">
-                <span class="chip__face">Snacks</span>
-            </label>
-            <label class="chip chip--meal">
-                <input type="radio" class="chip__input" name="meal" id="dinner" value="dinner">
-                <span class="chip__face">Dinner</span>
-            </label>
+        <div class="form-section form-section--match">
+            <div class="form-section__head">
+                <h2 class="form-section__title">Match</h2>
+            </div>
+            <div class="chip-grid chip-grid--match">
+                <label class="chip chip--match">
+                    <input type="radio" class="chip__input" name="combination" id="any" value="any" checked>
+                    <span class="chip__face">Any</span>
+                </label>
+                <label class="chip chip--match">
+                    <input type="radio" class="chip__input" name="combination" id="all" value="all">
+                    <span class="chip__face">All</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <div class="form-section">
-        <div class="form-section__head">
-            <h2 class="form-section__title">Match mode</h2>
-            <p class="form-section__hint">All = every selected ingredient; Any = at least one</p>
-        </div>
-        <div class="chip-grid">
-            <label class="chip">
-                <input type="radio" class="chip__input" name="combination" id="any" value="any" checked>
-                <span class="chip__face">Any</span>
-            </label>
-            <label class="chip">
-                <input type="radio" class="chip__input" name="combination" id="all" value="all">
-                <span class="chip__face">All</span>
-            </label>
-        </div>
-    </div>
-
-    <div class="form-section">
+    <div class="form-section form-section--ingredients">
         <div class="form-section__head">
             <h2 class="form-section__title">Your ingredients</h2>
             <p class="form-section__hint"><span id="ingredient-count">1</span> selected</p>
         </div>
-        <div class="chip-grid" id="ingredient-chips">
-            {% set items = [
-                ('millet', 'Millets'), ('oats', 'Oats'), ('rice', 'Rice'),
-                ('idli rice', 'Idli Rice'), ('dosa rice', 'Dosa Rice'),
-                ('wheat flour', 'Wheat Flour'), ('rice flour', 'Rice Flour'),
-                ('ragi flour', 'Ragi Flour'), ('corn flour', 'Corn Flour'),
-                ('besan', 'Besan Flour'), ('bread', 'Bread'), ('rava', 'Rava'),
-                ('sooji', 'Sooji'), ('moong dal', 'Moong Dal'), ('chana dal', 'Chana Dal'),
-                ('toor dal', 'Toor/Tur Dal'), ('vermicelli', 'Vermicelli'),
-                ('noodles', 'Noodles'), ('sabudana', 'Sabudana'), ('poha', 'Poha'),
-                ('oil', 'Oil', True), ('paneer', 'Paneer'), ('peas', 'Peas'),
-                ('tomato', 'Tomato'), ('onion', 'Onion'), ('badam', 'Badam'),
-                ('cashew', 'Cashews'), ('pumpkin seeds', 'Pumpkin Seeds')
+        <div id="ingredient-chips">
+            {% set groups = [
+                ('Grains & flours', [
+                    ('millet', 'Millets'), ('oats', 'Oats'), ('rice', 'Rice'),
+                    ('idli rice', 'Idli Rice'), ('dosa rice', 'Dosa Rice'),
+                    ('wheat flour', 'Wheat Flour'), ('maida', 'Maida'),
+                    ('rice flour', 'Rice Flour'), ('ragi flour', 'Ragi Flour'),
+                    ('corn flour', 'Corn Flour'), ('besan', 'Besan'),
+                    ('rava', 'Rava'), ('sooji', 'Sooji'), ('bread', 'Bread'),
+                    ('vermicelli', 'Vermicelli'), ('noodles', 'Noodles'),
+                    ('sabudana', 'Sabudana'), ('poha', 'Poha')
+                ]),
+                ('Dals', [
+                    ('moong dal', 'Moong Dal'), ('chana dal', 'Chana Dal'),
+                    ('toor dal', 'Toor Dal'), ('urad dal', 'Urad Dal')
+                ]),
+                ('Dairy', [
+                    ('curd', 'Curd'), ('milk', 'Milk'), ('ghee', 'Ghee'),
+                    ('butter', 'Butter'), ('cheese', 'Cheese'), ('cream', 'Cream'),
+                    ('paneer', 'Paneer')
+                ]),
+                ('Vegetables', [
+                    ('tomato', 'Tomato'), ('onion', 'Onion'), ('potato', 'Potato'),
+                    ('carrot', 'Carrot'), ('capsicum', 'Capsicum'), ('peas', 'Peas'),
+                    ('beans', 'Beans'), ('cabbage', 'Cabbage'), ('cauliflower', 'Cauliflower'),
+                    ('palak', 'Palak'), ('spinach', 'Spinach'), ('methi', 'Methi'),
+                    ('mushroom', 'Mushroom'), ('corn', 'Corn')
+                ]),
+                ('Nuts & extras', [
+                    ('badam', 'Badam'), ('cashew', 'Cashews'),
+                    ('pumpkin seeds', 'Pumpkin Seeds'), ('peanut', 'Peanut'),
+                    ('sesame', 'Sesame'), ('coconut', 'Coconut'),
+                    ('jaggery', 'Jaggery'), ('tamarind', 'Tamarind'),
+                    ('soy', 'Soy'), ('oil', 'Oil', True)
+                ])
             ] %}
-            {% for item in items %}
-            <label class="chip">
-                <input type="checkbox" class="chip__input" name="ingredient" value="{{ item[0] }}"
-                    {% if item|length > 2 and item[2] %}checked{% endif %}>
-                <span class="chip__face">{{ item[1] }}</span>
-            </label>
+            {% for group_name, items in groups %}
+            <div class="ingredient-group">
+                <h3 class="ingredient-group__title">{{ group_name }}</h3>
+                <div class="chip-grid chip-grid--ingredients">
+                    {% for item in items %}
+                    <label class="chip chip--ingredient">
+                        <input type="checkbox" class="chip__input" name="ingredient" value="{{ item[0] }}"
+                            {% if item|length > 2 and item[2] %}checked{% endif %}>
+                        <span class="chip__face">{{ item[1] }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -110,7 +138,7 @@
             <div class="choice-summary__items" id="selected-ingredients-preview"></div>
         </div>
         <p class="selection-badge">Ready when you are — <strong>find my recipes</strong></p>
-        <button type="submit" class="btn-primary btn-primary--shine">
+        <button type="submit" class="btn-primary btn-primary--shine btn-primary--small">
             <span>Suggest recipes</span>
             <span class="btn-primary__icon" aria-hidden="true">→</span>
         </button>
