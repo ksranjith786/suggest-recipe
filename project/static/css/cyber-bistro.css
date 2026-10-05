@@ -938,10 +938,10 @@ body.dew-page {
 .hero--pantry {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(1.25rem, 4vw, 2.25rem);
+    gap: 1rem;
     align-items: center;
-    min-height: clamp(24rem, 55vh, 36rem);
-    padding: clamp(1rem, 3vw, 1.5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+    min-height: 0;
+    padding: 0.25rem 0 1rem;
     text-align: left;
 }
 
@@ -961,8 +961,13 @@ body.dew-page {
 }
 
 .hero--pantry .hero__title {
-    max-width: 11ch;
+    max-width: 18ch;
     margin-inline: 0;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.hero--pantry .hero__lead {
+    font-size: 0.95rem;
 }
 
 .hero__lead {
@@ -1099,9 +1104,115 @@ body.dew-page {
 }
 
 .pantry-form__intro {
-    margin-bottom: 1.65rem;
-    padding-bottom: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.85rem;
     border-bottom: 1px solid var(--food-line);
+}
+
+.pantry-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: start;
+}
+
+.pantry-toolbar .form-section + .form-section {
+    margin-top: 0;
+}
+
+.form-section--meal,
+.form-section--match {
+    padding: 0.55rem 0.65rem;
+}
+
+.form-section--meal .form-section__head,
+.form-section--match .form-section__head {
+    margin-bottom: 0.35rem;
+}
+
+.form-section--meal .form-section__title,
+.form-section--match .form-section__title {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.chip--meal .chip__face {
+    min-height: 2rem;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.78rem;
+}
+
+.chip-grid--match {
+    grid-template-columns: repeat(2, 3.4rem);
+    gap: 0.3rem;
+}
+
+.chip--match .chip__face {
+    min-height: 1.7rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    box-shadow: none;
+}
+
+.chip--match .chip__input:checked + .chip__face,
+.chip--meal .chip__input:checked + .chip__face {
+    box-shadow: none;
+    transform: none;
+}
+
+.pantry-form .btn-primary--small {
+    min-width: 0;
+    min-height: 2.15rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
+    box-shadow: none;
+}
+
+.pantry-form .btn-primary__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.75rem;
+}
+
+.form-section--ingredients {
+    margin-top: 0.75rem;
+}
+
+.ingredient-group + .ingredient-group {
+    margin-top: 0.7rem;
+}
+
+.ingredient-group__title {
+    margin: 0 0 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--food-honey, var(--dew-amber, #e8c76a));
+}
+
+.chip-grid--ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.chip--ingredient {
+    width: auto;
+}
+
+.chip--ingredient .chip__face {
+    min-height: 1.85rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+}
+
+.chip--ingredient .chip__input:checked + .chip__face::after {
+    top: 0.28rem;
+    right: 0.35rem;
+    width: 4px;
+    height: 4px;
 }
 
 .pantry-form__kicker {
@@ -1410,6 +1521,10 @@ body.dew-page {
         padding-top: 0.25rem;
     }
 
+    .pantry-toolbar {
+        grid-template-columns: 1fr;
+    }
+
     .hero__title {
         max-width: 12ch;
     }
@@ -1548,6 +1663,28 @@ body.dew-page {
     outline-offset: 3px;
 }
 
+.chip--meal:hover .chip__face,
+.chip--match:hover .chip__face {
+    transform: none;
+    box-shadow: none;
+}
+
+.chip--meal.is-selected .chip__face,
+.chip--meal .chip__input:checked + .chip__face,
+.chip--match.is-selected .chip__face,
+.chip--match .chip__input:checked + .chip__face {
+    box-shadow: none;
+    transform: none;
+}
+
+.chip--meal .chip__input:checked + .chip__face::after,
+.chip--match .chip__input:checked + .chip__face::after {
+    width: 4px;
+    height: 4px;
+    right: 0.35rem;
+    box-shadow: none;
+}
+
 .choice-summary {
     width: min(100%, 44rem);
     padding: 0.9rem;
@@ -1646,6 +1783,14 @@ body.dew-page {
 
 .btn-primary--shine:hover .btn-primary__icon {
     transform: translateX(3px);
+}
+
+.pantry-form .btn-primary--shine.btn-primary--small {
+    min-width: 0;
+    min-height: 2.15rem;
+    padding: 0.35rem 0.95rem;
+    font-size: 0.85rem;
+    box-shadow: none;
 }
 
 .btn-recipe {
