@@ -12,11 +12,15 @@ MAX_RECIPES_PAGE = 100
 ALLOWED_MEALS = {'breakfast', 'lunch', 'snacks', 'dinner'}
 ALLOWED_COMBINATIONS = {'any', 'all'}
 ALLOWED_INGREDIENTS = {
-    'millet', 'oats', 'rice', 'idli rice', 'dosa rice', 'wheat flour',
+    'millet', 'oats', 'rice', 'idli rice', 'dosa rice', 'wheat flour', 'maida',
     'rice flour', 'ragi flour', 'corn flour', 'besan', 'bread', 'rava',
-    'sooji', 'moong dal', 'chana dal', 'toor dal', 'vermicelli', 'noodles',
-    'sabudana', 'poha', 'oil', 'paneer', 'peas', 'tomato', 'onion',
-    'badam', 'cashew', 'pumpkin seeds',
+    'sooji', 'vermicelli', 'noodles', 'sabudana', 'poha',
+    'moong dal', 'chana dal', 'toor dal', 'urad dal',
+    'curd', 'milk', 'ghee', 'butter', 'cheese', 'cream', 'paneer',
+    'tomato', 'onion', 'potato', 'carrot', 'capsicum', 'peas', 'beans',
+    'cabbage', 'cauliflower', 'palak', 'spinach', 'methi', 'mushroom', 'corn',
+    'badam', 'cashew', 'pumpkin seeds', 'peanut', 'sesame', 'coconut',
+    'jaggery', 'tamarind', 'soy', 'oil',
 }
 
 
